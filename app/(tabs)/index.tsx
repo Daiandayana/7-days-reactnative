@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 import LogoutButton from "../components/LogoutButton";
+import { COLORS, FONT_SIZE, SPACING } from "../constants/theme";
 
 export default function HomeScreen() {
   return (
@@ -17,15 +18,15 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#fff",
+    backgroundColor: COLORS.background,
   },
   title: {
-    fontSize: 28,
+    fontSize: FONT_SIZE.xlarge,
     fontWeight: "bold",
-    marginBottom: 8,
+    marginBottom: SPACING.sm,
   },
   subtitle: {
-    fontSize: 16,
-    color: "#666",
+    fontSize: FONT_SIZE.medium,
+    color: COLORS.textSecondary,
   },
 });

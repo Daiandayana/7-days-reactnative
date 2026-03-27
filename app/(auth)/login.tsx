@@ -7,6 +7,8 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { APP_CONFIG } from "../constants/config";
+import { BORDER_RADIUS, COLORS, FONT_SIZE, SPACING } from "../constants/theme";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -22,7 +24,10 @@ export default function Login() {
       return;
     }
 
-    if (email === "taskflow@app.com" && password === "123456") {
+    if (
+      email === APP_CONFIG.DEMO_EMAIL &&
+      password === APP_CONFIG.DEMO_PASSWORD
+    ) {
       router.replace("/");
     } else {
       setError("Invalid email or password");
@@ -59,39 +64,39 @@ export default function Login() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    padding: SPACING.lg,
     justifyContent: "center",
-    backgroundColor: "#fff",
+    backgroundColor: COLORS.background,
   },
   title: {
-    fontSize: 28,
+    fontSize: FONT_SIZE.xlarge,
     fontWeight: "bold",
-    marginBottom: 30,
+    marginBottom: SPACING.xl,
     textAlign: "center",
   },
   input: {
     borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 8,
-    padding: 15,
-    marginBottom: 15,
-    fontSize: 16,
+    borderColor: COLORS.border,
+    borderRadius: BORDER_RADIUS.md,
+    padding: SPACING.md,
+    marginBottom: SPACING.md,
+    fontSize: FONT_SIZE.medium,
   },
   button: {
-    backgroundColor: "#007AFF",
-    padding: 15,
-    borderRadius: 8,
+    backgroundColor: COLORS.primary,
+    padding: SPACING.md,
+    borderRadius: BORDER_RADIUS.md,
     alignItems: "center",
-    marginTop: 10,
+    marginTop: SPACING.sm,
   },
   buttonText: {
-    color: "#fff",
-    fontSize: 16,
+    color: COLORS.background,
+    fontSize: FONT_SIZE.medium,
     fontWeight: "bold",
   },
   error: {
-    color: "red",
-    marginBottom: 10,
+    color: COLORS.error,
+    marginBottom: SPACING.sm,
     textAlign: "center",
   },
 });
