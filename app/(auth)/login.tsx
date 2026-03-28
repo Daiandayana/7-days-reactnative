@@ -7,14 +7,16 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { useAuth } from "../context/AuthContext";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
+  const { login } = useAuth();
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     setError("");
 
     if (!email || !password) {
@@ -23,6 +25,7 @@ export default function Login() {
     }
 
     if (email === "taskflow@app.com" && password === "123456") {
+      await login("demo-token");
       router.replace("/");
     } else {
       setError("Invalid email or password");
