@@ -1,6 +1,6 @@
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { AuthProvider, useAuth } from "./context/AuthContext";
+import { AuthProvider, useAuth } from "../src/context/AuthContext";
 
 function RootNav() {
   const { isLoading, isLoggedIn } = useAuth();
@@ -10,11 +10,13 @@ function RootNav() {
   }
 
   return (
-    <Stack screenOptions={{ headerShown: false }}>
+    <Stack
+      screenOptions={{ headerShown: false, animation: "slide_from_right" }}
+    >
       {isLoggedIn ? (
         <Stack.Screen name="(tabs)" />
       ) : (
-        <Stack.Screen name="(auth)/login" />
+        <Stack.Screen name="(auth)/login" options={{ presentation: "modal" }} />
       )}
     </Stack>
   );

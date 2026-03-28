@@ -1,15 +1,20 @@
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import {
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
 } from "react-native";
-import { APP_CONFIG } from "../constants/config";
-import { BORDER_RADIUS, COLORS, FONT_SIZE, SPACING } from "../constants/theme";
-import { useAuth } from "../context/AuthContext";
+import { APP_CONFIG } from "../../src/constants/config";
+import {
+    BORDER_RADIUS,
+    COLORS,
+    FONT_SIZE,
+    SPACING,
+} from "../../src/constants/theme";
+import { useAuth } from "../../src/context/AuthContext";
 
 export default function Login() {
   const [email, setEmail] = useState("");
