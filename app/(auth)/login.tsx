@@ -9,14 +9,16 @@ import {
 } from "react-native";
 import { APP_CONFIG } from "../constants/config";
 import { BORDER_RADIUS, COLORS, FONT_SIZE, SPACING } from "../constants/theme";
+import { useAuth } from "../context/AuthContext";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
+  const { login } = useAuth();
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     setError("");
 
     if (!email || !password) {
@@ -28,6 +30,7 @@ export default function Login() {
       email === APP_CONFIG.DEMO_EMAIL &&
       password === APP_CONFIG.DEMO_PASSWORD
     ) {
+      await login("demo-token");
       router.replace("/");
     } else {
       setError("Invalid email or password");

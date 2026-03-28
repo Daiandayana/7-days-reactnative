@@ -1,17 +1,30 @@
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { useState } from "react";
+import { AuthProvider, useAuth } from "./context/AuthContext";
 
-export default function RootLayout() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+function RootNav() {
+  const { isLoading, isLoggedIn } = useAuth();
+
+  if (isLoading) {
+    return null;
+  }
 
   return (
-    <>
-      <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="(auth)/login" />
+    <Stack screenOptions={{ headerShown: false }}>
+      {isLoggedIn ? (
         <Stack.Screen name="(tabs)" />
-      </Stack>
+      ) : (
+        <Stack.Screen name="(auth)/login" />
+      )}
+    </Stack>
+  );
+}
+
+export default function RootLayout() {
+  return (
+    <AuthProvider>
+      <RootNav />
       <StatusBar style="auto" />
-    </>
+    </AuthProvider>
   );
 }
